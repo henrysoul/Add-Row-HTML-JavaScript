@@ -19,11 +19,12 @@ let template = "<tr>"+
                   "<td><input type='text' placeholder='year'/></td>"+
                   "<td style='color:red'><button class='remove'>Remove</button></td>"+
                "</tr>"
-
+  // this function returns number of rows
   tr=()=>{
     let rows = document.getElementsByTagName("tr").length;
     return rows;
   }
+
   add.addEventListener("click",e=>{
     let newRow = table.insertRow();
     newRow.innerHTML=template;
@@ -31,6 +32,7 @@ let template = "<tr>"+
       for(let remove of Array.from(btn)){
           remove.addEventListener("click",e=>{
             if(tr()>1){
+              // this remove row if row>1
               remove.parentElement.parentElement.remove();
             }
           });
