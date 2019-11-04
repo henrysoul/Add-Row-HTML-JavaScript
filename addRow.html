@@ -1,0 +1,39 @@
+<div style="margin: auto">
+    <table id="table">
+      <tr>
+        <td><input type="text" placeholder="name"/></td>
+        <td><input type="text" placeholder="Class"/></td>
+        <td><input type="text" placeholder="year"/></td>
+        <td style="color:red"><button class="remove">Remove</button></td>
+      </tr>
+    </table>
+    <button id="add">Add</button>
+</div>
+<script>
+let table = document.getElementById("table");
+let add = document.getElementById("add");
+
+let template = "<tr>"+
+                  "<td><input type='text' placeholder='name'/></td>"+
+                  "<td><input type='text' placeholder='Class'/></td>"+
+                  "<td><input type='text' placeholder='year'/></td>"+
+                  "<td style='color:red'><button class='remove'>Remove</button></td>"+
+               "</tr>"
+
+  tr=()=>{
+    let rows = document.getElementsByTagName("tr").length;
+    return rows;
+  }
+  add.addEventListener("click",e=>{
+    let newRow = table.insertRow();
+    newRow.innerHTML=template;
+      let btn = document.getElementsByClassName("remove");
+      for(let remove of Array.from(btn)){
+          remove.addEventListener("click",e=>{
+            if(tr()>1){
+              remove.parentElement.parentElement.remove();
+            }
+          });
+      }
+  })
+</script>
